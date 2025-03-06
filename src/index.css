@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&family=Sedan:ital@0;1&display=swap');
 @import "tailwindcss";
-
 @plugin "tailwindcss-animate";
-
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sedan: "sedan", sans-serif; 
+}
 
 :root {
   --background: oklch(1 0 0);
