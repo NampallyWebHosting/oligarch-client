@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"; // ShadCN Button Component
 import OLIGARCH_LOGO from "../../assets/Group 22.svg";
 const Footer: React.FC = () => {
     return (
-        <footer className="relative bg-[#1C1F26] text-white w-full min-h-screen flex flex-col px-4 py-10 overflow-hidden">
+        <footer className=" absolute bg-[#1C1F26] text-white w-full min-h-screen flex flex-col px-4 py-10 overflow-hidden">
             <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start relative z-10 px-6 md:px-12 lg:px-20">
                 {/* Left Section - Logo & Tagline */}
                 <div className="text-center md:text-left flex flex-col items-center md:items-start">
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
             {/* Large Background Text */}
             <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden flex justify-center">
                 <h1
-                    className="text-[30vw] md:text-[18vw] lg:text-[19vw] font-serif text-[#F5EADB] leading-none whitespace-nowrap"
+                    className="text-[30vw] md:text-[18vw] lg:text-[18vw] font-serif text-[#F5EADB] leading-none whitespace-nowrap"
                     aria-hidden="true"
                 >
                     OLIGARCH

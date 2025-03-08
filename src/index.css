@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Sedan+SC&family=Sedan:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sedan+SC&family=Sedan:ital@0;1&display=swap');
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 @custom-variant dark (&:is(.dark *));
 
 @theme {
   --font-sedan: "sedan", sans-serif; 
+  --font-montserrat: "Montserrat", sans-serif; 
 }
 
 :root {
