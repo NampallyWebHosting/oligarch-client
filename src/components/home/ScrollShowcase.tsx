@@ -141,20 +141,21 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ items }) => {
             <div
               key={index}
               role="listitem"
-              className="item w-screen h-full absolute inset-0 flex shadow-none overflow-hidden lg:px-60"
+              className="item w-screen h-full absolute inset-0 flex flex-col md:flex-row shadow-none overflow-hidden px-6 lg:px-60"
             >
               {/* Left: Image Section */}
-              <img
-                src={item.imageSrc}
-                alt={item.title}
-                className="object-cover w-1/2 h-full rounded-r-none rounded-xl"
-              />
-
+              <div className="w-full md:w-1/2 lg:w-1/2 md:h-full h-full rounded-t-xl md:rounded-t-none md:rounded-r-none md:rounded-l-xl">
+                <img
+                  src={item.imageSrc}
+                  alt={item.title}
+                  className="object-cover h-full w-full"
+                />
+              </div>
               {/* Right: Text Section */}
-              <div className="bg-white flex flex-col justify-center p-12 relative w-1/2 rounded-xl rounded-l-none">
-                <h2 className="text-3xl leading-[100%] font-semibold">{item.title}</h2>
-                <p className="text-base font-medium mt-2">{item.description}</p>
-                <div className="flex justify-end text-[#6F2330] font-semibold mt-2 cursor-pointer animate-bounce">
+              <div className="bg-white flex flex-col justify-center p-6 md:p-12 relative w-full md:w-1/2 h-full rounded-b-xl md:rounded-l-none md:rounded-xl">
+                <h2 className="text-2xl md:text-3xl leading-[100%] font-semibold">{item.title}</h2>
+                <p className="text-sm md:text-base font-medium mt-2">{item.description}</p>
+                <div className="flex justify-end text-[#6F2330] font-semibold mt-4 md:mt-2 cursor-pointer animate-bounce">
                   visit now <ArrowUpRight />
                 </div>
               </div>

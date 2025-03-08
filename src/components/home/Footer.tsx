@@ -5,13 +5,13 @@ import OLIGARCH_LOGO from "../../assets/Group 22.svg";
 const Footer: React.FC = () => {
     return (
         <footer className=" absolute bg-[#1C1F26] text-white w-full min-h-screen flex flex-col px-4 py-10 overflow-hidden">
-            <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start relative z-10 px-6 md:px-12 lg:px-20">
+            <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start relative z-10 px-6 md:px-2 lg:px-20">
                 {/* Left Section - Logo & Tagline */}
                 <div className="text-center md:text-left flex flex-col items-center md:items-start">
                     <div className="flex items-center gap-2">
-                        <img src={OLIGARCH_LOGO} alt="Oligarch Holdings Logo" className="w-12 md:w-full" />
+                        <img src={OLIGARCH_LOGO} alt="Oligarch Holdings Logo" className="w-12 md:w-28 lg:w-full" />
                         <div>
-                            <p className="font-[Sedan] font-normal text-[32px] md:text-[40px] leading-[38px] md:leading-[48px]">
+                            <p className="font-[Sedan] font-normal text-[32px] lg:text-[40px] leading-[38px] lg::leading-[48px]">
                                 OLIGARCH
                             </p>
                             <p className="font-[Sedan] font-normal text-[20px] md:text-[24px] leading-[26px] md:leading-[28.8px]">
@@ -23,9 +23,8 @@ const Footer: React.FC = () => {
                         Empowering innovation, transforming industries.
                     </p>
                 </div>
-
                 {/* Right Section - Contact & Location */}
-                <div className="mt-8 md:mt-0 flex flex-col md:flex-row gap-6 md:gap-12 text-center md:text-left">
+                <div className="mt-8 md:mt-0 flex flex-col md:flex-row gap-6 lg:gap-12 text-center md:text-left">
                     {/* Contact Us */}
                     <div>
                         <label className="text-lg md:text-xl font-medium text-[#FFFAF3]">Contact us</label>
@@ -50,7 +49,7 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Social Media & Copyright */}
-            <div className="flex flex-start ml-12  mt-36 gap-4">
+            <div className="flex  flex-col md:flex-row lg:flex-start md:ml-12  mt-36 md:gap-4">
                 <div className="flex gap-4">
                     <Button variant="ghost" className="bg-[#FFFAF3] rounded-full p-3 w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
                         <Facebook size={20} className="text-[#1C1F26]" />
@@ -73,7 +72,7 @@ const Footer: React.FC = () => {
             {/* Large Background Text */}
             <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden flex justify-center">
                 <h1
-                    className="text-[30vw] md:text-[18vw] lg:text-[18vw] font-serif text-[#F5EADB] leading-none whitespace-nowrap"
+                    className="text-[17vw] md:text-[18vw] lg:text-[18vw] font-serif text-[#F5EADB] leading-none whitespace-nowrap"
                     aria-hidden="true"
                 >
                     OLIGARCH

@@ -70,6 +70,7 @@ const HorizontalScrollText: React.FC = () => {
             {
               color: "#fff",
               scale: 1.2,
+              // fontWeight: 300, // Ensure font weight is 400
               opacity: 1,
             },
             groupIndex
@@ -101,9 +102,9 @@ const HorizontalScrollText: React.FC = () => {
   return (
     <div
       ref={sectionRef}
-      className="h-screen flex items-center justify-center overflow-hidden bg-black"
+      className="h-screen  w-full flex items-center justify-center overflow-hidden bg-black"
     >
-      <div className="relative w-full flex flex-col items-start gap-1.5 pl-[20vw]">
+      <div className="relative w-full flex flex-col items-start  gap-1.5 pl-14  md:pl-[20vw]">
         {textGroups.map((group, groupIndex) => (
           <div key={groupIndex} className="relative w-full">
             {group.map((line, lineIndex) => (
@@ -114,7 +115,7 @@ const HorizontalScrollText: React.FC = () => {
                     if (!ghostRefs.current[groupIndex]) ghostRefs.current[groupIndex] = [];
                     ghostRefs.current[groupIndex][lineIndex] = el;
                   }}
-                  className="absolute font-bold text-[#FFFAF3] text-[46px] leading-[100%] tracking-[0]"
+                  className="absolute font-bold text-[#FFFAF3] text-sm sm:text-lg md:text-3xl lg:text-[46px] lg:leading-[100%] tracking-[0]"
                 >
                   {line}
                 </motion.div>
@@ -125,7 +126,7 @@ const HorizontalScrollText: React.FC = () => {
                     if (!textRefs.current[groupIndex]) textRefs.current[groupIndex] = [];
                     textRefs.current[groupIndex][lineIndex] = el;
                   }}
-                  className="text-[46px] leading-[100%] tracking-[0] font-semibold text-[#FFFAF352] opacity-100 font-montserrat"
+                  className="text-sm sm:text-lg md:text-3xl lg:text-[46px] lg:leading-[100%] tracking-[0] font-semibold text-[#FFFAF352] opacity-100 font-montserrat"
                 >
                   {line}
                 </motion.div>
