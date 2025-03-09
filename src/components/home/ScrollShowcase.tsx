@@ -2,12 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
-
 // Importing assets
-import JammeLogo from "@/assets/Frame 10.svg";
+import JammeLogo from "@/assets/Frame 45.svg";
 import CocconSalonLogo from "@/assets/1 1.svg";
 import ViapniLogo from "@/assets/Frame 10 (1).svg";
-import MahadevLogo from "@/assets/Untitled-2-02.svg";
+import MahadevLogo from "@/assets/Group 55.svg";
 import EmirateaLogo from "@/assets/Frame 10 (3).svg";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +18,7 @@ interface Item {
   description: string;
   imageSrc: string;
   bgColor: string;
+  url: string;
 }
 
 // Props for the ScrollSection component
@@ -36,41 +36,46 @@ const ScrollSections: React.FC = () => {
             number: "1",
             title: "Jamme",
             description:
-              "Explore the untouched beauty of forests, mountains, and rivers as we uncover the hidden secrets of nature's most breathtaking landscapes.",
+              "Jamme is an audio-first social app for sharing 1-minute voice messages  –  no cameras, no keyboards. It’s a space for creatives, students, artists, workers, and everyday people to connect through authentic storytelling.",
             imageSrc: JammeLogo,
             bgColor: "#FFAE63",
+            url: "https://jamme.app",
           },
           {
             number: "2",
-            title: "Coccon",
+            title: "Cocoon",
             description:
-              "Immerse yourself in the soothing sounds of chirping birds, rustling leaves, and flowing streams – nature's music for peace and tranquility.",
+              "Step into Cocoon, India's bespoke boutique salon nestled in Hyderabad. This chic haven offers expert haircuts, luxe treatments, and bespoke beauty services. nail-art all in a serene, stylish setting. Get pampered!",
             imageSrc: CocconSalonLogo,
             bgColor: "#444444",
+            url: "https://cocoon.salon",
           },
           {
             number: "3",
             title: "Vipani",
             description:
-              "Discover stunning views of majestic mountains, endless oceans, and golden sunsets that remind us of nature's artistic brilliance.",
+              "Operate Fearlessly. Command your business with Vipani – the ultimate AI Super-app to unify and streamline all your business functions in one seamless interface.",
             imageSrc: ViapniLogo,
             bgColor: "#FFC2D9",
+            url: "https://vipani.co",
           },
           {
             number: "4",
             title: "Mahadev",
             description:
-              "Experience the divine serenity of spiritual landscapes, ancient temples, and the powerful energy of sacred places.",
+              "Mahdev offers bespoke software development, design, cybersecurity, and AI solutions to boost your brand. Contact us today.",
             imageSrc: MahadevLogo,
             bgColor: "#FFFAF3",
+            url: "https://example.com/mahadev",
           },
           {
             number: "5",
             title: "Emiratea",
             description:
-              "Dive into the incredible forces of nature – from roaring waterfalls to mighty hurricanes – and see how they sculpt the earth we live on.",
+              "Emiratea brings Hyderabad’s Irani chai and Osmania biscuits to the Emirates. Our chai should be a household name, representing the best tea. We maintain our authentic tradition.",
             imageSrc: EmirateaLogo,
             bgColor: "#CEB2B5",
+            url: "#",
           },
         ]}
       />
@@ -136,28 +141,31 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ items }) => {
       style={{ backgroundColor: bgColor, transition: "background-color 0.5s ease-in-out" }}
     >
       <div className="h-screen">
-        <div role="list" className="flex h-[600px] relative p-1 mt-20">
+        <div role="list" className="flex h-[550px] md:h-[800px] lg:h-[600px] relative p-1 mt-20">
           {items.map((item, index) => (
             <div
               key={index}
               role="listitem"
-              className="item w-screen h-full absolute inset-0 flex flex-col md:flex-row shadow-none overflow-hidden px-6 lg:px-60"
+              className="item w-screen h-full absolute inset-0 flex flex-col lg:flex-row shadow-none overflow-hidden px-6 md:px-40 lg:px-60"
             >
               {/* Left: Image Section */}
-              <div className="w-full md:w-1/2 lg:w-1/2 md:h-full h-full rounded-t-xl md:rounded-t-none md:rounded-r-none md:rounded-l-xl">
-                <img
-                  src={item.imageSrc}
-                  alt={item.title}
-                  className="object-cover h-full w-full"
-                />
-              </div>
+              <img
+                src={item.imageSrc}
+                alt={item.title}
+                className="object-cover max-w-md lg:max-w-xl rounded-xl rounded-b-none lg:rounded-b-3x lg:rounded-3xl lg:rounded-r-none"
+              />
               {/* Right: Text Section */}
-              <div className="bg-white flex flex-col justify-center p-6 md:p-12 relative w-full md:w-1/2 h-full rounded-b-xl md:rounded-l-none md:rounded-xl">
-                <h2 className="text-2xl md:text-3xl leading-[100%] font-semibold">{item.title}</h2>
-                <p className="text-sm md:text-base font-medium mt-2">{item.description}</p>
-                <div className="flex justify-end text-[#6F2330] font-semibold mt-4 md:mt-2 cursor-pointer animate-bounce">
-                  visit now <ArrowUpRight />
-                </div>
+              <div className="bg-white flex flex-col justify-center p-6 md:p-12 relative  w-full md:max-w-md lg:w-1/2 h-full lg:rounded-3xl lg:rounded-l-none  rounded-xl rounded-t-none lg:rounded-t-3">
+                <h2 className="text-2xl md:text-3xl leading-[100%] font-semibold ml-3">{item.title}</h2>
+                <p className="text-sm md:text-base font-medium mt-2 px-4 ">{item.description}</p>
+                {item.title === "Emiratea" ? (
+                  <span className="flex justify-end text-[#6F2330] font-semibold mt-4 md:mt-4">Coming Soon</span>
+                ) : (
+                  <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex justify-end text-[#6F2330] font-semibold mt-4 md:mt-4 cursor-pointer animate-bounce text-sm lg:text-base">
+                    Visit Now <ArrowUpRight />
+                  </a>
+                )}
+
               </div>
             </div>
           ))}

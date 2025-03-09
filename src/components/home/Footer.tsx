@@ -1,6 +1,4 @@
 import React from "react";
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-import { Button } from "@/components/ui/button"; // ShadCN Button Component
 import OLIGARCH_LOGO from "../../assets/Group 22.svg";
 const Footer: React.FC = () => {
     return (
@@ -50,7 +48,7 @@ const Footer: React.FC = () => {
 
             {/* Social Media & Copyright */}
             <div className="flex  flex-col md:flex-row lg:flex-start md:ml-12  mt-36 md:gap-4">
-                <div className="flex gap-4">
+                {/* <div className="flex gap-4">
                     <Button variant="ghost" className="bg-[#FFFAF3] rounded-full p-3 w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
                         <Facebook size={20} className="text-[#1C1F26]" />
                     </Button>
@@ -63,10 +61,13 @@ const Footer: React.FC = () => {
                     <Button variant="ghost" className="bg-[#FFFAF3] rounded-full p-3 w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
                         <Instagram size={20} className="text-[#1C1F26]" />
                     </Button>
-                </div>
-                <div className="text-center text-gray-500 text-xs md:text-sm mt-6">
+                </div> */}
+                {/* <div className="text-center text-gray-500 text-xs md:text-sm mt-6">
                     © 2025 Oligarch Holdings. All rights reserved.
-                </div>
+                </div> */}
+            </div>
+            <div className=" flex justify-end text-gray-500 md:mr-2 lg:mr-10 mt-[420px] lg:mt-[120px] text-xs md:text-base lg:text-base">
+                © 2025 Oligarch Holdings. All rights reserved.
             </div>
 
             {/* Large Background Text */}
