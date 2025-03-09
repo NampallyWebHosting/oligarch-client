@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
                     © 2025 Oligarch Holdings. All rights reserved.
                 </div> */}
             </div>
-            <div className=" flex justify-end text-gray-500 md:mr-2 lg:mr-10 mt-[420px] lg:mt-[120px] text-xs md:text-base lg:text-base">
+            <div className=" absolute bottom-[55px] right-0 md:bottom-[140px] lg:bottom-[240px] mr-4 lg:mr-10 flex justify-end text-gray-500  text-xs md:text-base lg:text-base">
                 © 2025 Oligarch Holdings. All rights reserved.
             </div>
 

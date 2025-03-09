@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import logo from "@/assets/Use this for svg.svg";
+import logo from "@/assets/LionLogo.svg";
 
 const LandingPage = () => {
   const [isMobile, setIsMobile] = useState(false);

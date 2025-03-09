@@ -3,11 +3,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
 // Importing assets
-import JammeLogo from "@/assets/Frame 45.svg";
-import CocconSalonLogo from "@/assets/1 1.svg";
-import ViapniLogo from "@/assets/Frame 10 (1).svg";
-import MahadevLogo from "@/assets/Group 55.svg";
-import EmirateaLogo from "@/assets/Frame 10 (3).svg";
+import JammeLogo from "@/assets/Jamme.svg"
+import CocconSalonLogo from "@/assets/Cocoon.svg";
+import ViapniLogo from "@/assets/Vipini.svg"
+import MahadevLogo from "@/assets/Mahdev logo 2025.svg";
+import EmirateaLogo from "@/assets/Emiratea.svg";
 import mixpanel from "@/mixpanel";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -158,7 +158,7 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ items }) => {
                 <h2 className="text-2xl md:text-3xl leading-[100%] font-semibold ml-3">{item.title}</h2>
                 <p className="text-sm md:text-base font-medium mt-2 px-4 ">{item.description}</p>
                 {item.title === "Emiratea" ? (
-                  <span className="flex justify-end text-[#6F2330] font-semibold mt-4 md:mt-4">Coming Soon</span>
+                  <span className="flex justify-end text-[#6F2330] font-semibold mt-4 md:mt-4">Coming Soon..</span>
                 ) : (
                   <a
                     href={item.url}

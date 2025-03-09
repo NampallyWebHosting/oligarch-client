@@ -140,11 +140,7 @@ const HorizontalScrollText: React.FC = () => {
               ))}
             </div>
           </motion.div>
-
-
-
         ))}
-
       </div>
     </div>
 
