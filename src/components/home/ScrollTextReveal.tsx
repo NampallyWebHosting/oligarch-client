@@ -124,23 +124,24 @@ const HorizontalScrollText: React.FC = () => {
     >
       <div className="relative w-full flex flex-col items-center text-center font-montserrat">
         {textGroups.map((group, index) => (
-         <motion.div
-         key={index}
-         ref={(el) => {
-           textRefs.current[index] = el;
-         }}
-         className="absolute inset-0 flex items-center justify-center text-white text-lg sm:text-2xl md:text-4xl lg:text-5xl font-light opacity-0 leading-[150%] tracking-wide text-center w-full px-4"
-         style={{
-           textShadow: "0px 4px 12px rgba(255, 255, 255, 0.3)", // Soft glow effect
-         }}
-       >
-         <div className="w-full max-w-[70%] mx-auto">
-           {group.map((line, lineIndex) => (
-             <p key={lineIndex} className="mb-3">{line}</p>
-           ))}
-         </div>
-       </motion.div>
-       
+          <motion.div
+            key={index}
+            ref={(el) => {
+              textRefs.current[index] = el;
+            }}
+            className="absolute inset-0 flex items-center justify-start text-white text-base sm:text-2xl md:text-4xl lg:text-5xl font-light opacity-0 lg:leading-[100%] tracking-wide w-full px-4"
+            style={{
+              textShadow: "0px 4px 12px rgba(255, 255, 255, 0.3)", // Soft glow effect
+            }}
+          >
+            <div className="w-full lg:max-w-[70%] mr-auto text-left">
+              {group.map((line, lineIndex) => (
+                <p key={lineIndex} className="mb-1">{line}</p>
+              ))}
+            </div>
+          </motion.div>
+
+
 
         ))}
 
