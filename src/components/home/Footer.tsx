@@ -66,9 +66,7 @@ const Footer: React.FC = () => {
                     © 2025 Oligarch Holdings. All rights reserved.
                 </div> */}
             </div>
-            <div className=" absolute bottom-[55px] right-0 md:bottom-[140px] lg:bottom-[240px] mr-6 lg:mr-10 flex justify-end text-gray-500  text-xs md:text-base lg:text-base">
-                © 2025 Oligarch Holdings. All rights reserved.
-            </div>
+
 
             {/* Large Background Text */}
             <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden flex justify-center">
@@ -78,6 +76,9 @@ const Footer: React.FC = () => {
                 >
                     OLIGARCH
                 </h1>
+            </div>
+            <div className="text-center text-gray-500 text-xs md:text-sm mt-12 md:mt-24 px-4">
+                © 2025 Oligarch Holdings. All rights reserved.
             </div>
         </footer>
     );
