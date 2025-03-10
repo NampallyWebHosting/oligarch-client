@@ -19,13 +19,6 @@ const LandingPage = () => {
   const lowerPartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Force a repaint on Android to fix layout shift
-    requestAnimationFrame(() => {
-      document.body.style.display = "none";
-      document.body.offsetHeight; // Trigger reflow
-      document.body.style.display = "";
-    });
-
     // Check screen size
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -36,72 +29,78 @@ const LandingPage = () => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  
+
+  setTimeout(() => {
+    window.dispatchEvent(new Event("resize"));
+  }, 50);
+  
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowCurtain(true);
 
-      // Slight delay before GSAP animation starts
-      setTimeout(() => {
-        gsap.to(curtainRef.current, {
-          x: 0,
-          duration: 1.5,
-          ease: "power2.inOut",
-          onComplete: () => {
-            setShowLines(true);
+      // Animate the black screen sliding in
+      gsap.to(curtainRef.current, {
+        x: 0,
+        duration: 1.5,
+        ease: "power2.inOut",
+        onComplete: () => {
+          setShowLines(true);
 
-            if (isMobile) {
-              setTimeout(() => {
-                setShowMask(true);
+          if (isMobile) {
+            // Mobile Animation: Split screen movement
+            setTimeout(() => {
+              setShowMask(true);
 
-                gsap.to(upperPartRef.current, {
-                  yPercent: -100, // Use yPercent instead of y
-                  duration: 1.2,
-                  ease: "power2.inOut",
-                });
+              gsap.to(upperPartRef.current, {
+                y: "-100%",
+                duration: 1.2,
+                ease: "power2.inOut",
+              });
 
-                gsap.to(lowerPartRef.current, {
-                  yPercent: 100, // Use yPercent instead of y
-                  duration: 1.2,
-                  ease: "power2.inOut",
-                });
-              }, 500);
-            } else {
-              setTimeout(() => {
-                setShowMask(true);
+              gsap.to(lowerPartRef.current, {
+                y: "100%",
+                duration: 1.2,
+                ease: "power2.inOut",
+              });
+            }, 500);
+          } else {
+            // Desktop Animation: Masking sequence
+            setTimeout(() => {
+              setShowMask(true);
 
-                gsap.to(rightMaskRef.current, {
-                  width: "232px",
-                  duration: 1.2,
-                  ease: "power2.inOut",
-                  onComplete: () => {
-                    gsap.to(secondMaskRef.current, {
-                      width: `calc(50vw - 232px)`,
-                      duration: 1.2,
-                      ease: "power2.inOut",
-                      onComplete: () => {
-                        gsap.to(thirdMaskRef.current, {
-                          width: `calc(50vw - 232px)`,
-                          duration: 1.2,
-                          ease: "power2.inOut",
-                          onComplete: () => {
-                            gsap.to(fourthMaskRef.current, {
-                              left: "0px",
-                              width: "232px",
-                              duration: 1.2,
-                              ease: "power2.inOut",
-                            });
-                          },
-                        });
-                      },
-                    });
-                  },
-                });
-              }, 900);
-            }
-          },
-        });
-      }, 200); // Delayed animation start
+              gsap.to(rightMaskRef.current, {
+                width: "232px",
+                duration: 1.2,
+                ease: "power2.inOut",
+                onComplete: () => {
+                  gsap.to(secondMaskRef.current, {
+                    width: `calc(50vw - 232px)`,
+                    duration: 1.2,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                      gsap.to(thirdMaskRef.current, {
+                        width: `calc(50vw - 232px)`,
+                        duration: 1.2,
+                        ease: "power2.inOut",
+                        onComplete: () => {
+                          gsap.to(fourthMaskRef.current, {
+                            left: "0px",
+                            width: "232px",
+                            duration: 1.2,
+                            ease: "power2.inOut",
+                          });
+                        },
+                      });
+                    },
+                  });
+                },
+              });
+            }, 900);
+          }
+        },
+      });
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -109,15 +108,8 @@ const LandingPage = () => {
 
   return (
     <div className="relative h-screen w-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden">
-      {/* Logo wrapped with Framer Motion to avoid GSAP interference */}
-      <motion.img
-        src={logo}
-        alt="Logo"
-        className="w-[500px]"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-      />
+      {/* Logo */}
+      <img src={logo} alt="Logo" className="w-[500px]" />
 
       {/* Black Curtain */}
       {showCurtain && (
@@ -145,18 +137,65 @@ const LandingPage = () => {
           {/* Masking Animations */}
           {!isMobile && showMask && (
             <>
-              <motion.div ref={rightMaskRef} className="absolute top-0 bottom-0 right-0 bg-[#FFFAF3]" />
-              <motion.div ref={secondMaskRef} className="absolute top-0 bottom-0 right-[232px] bg-[#FFFAF3]" />
-              <motion.div ref={thirdMaskRef} className="absolute top-0 bottom-0 right-[calc(50vw)] bg-[#FFFAF3]" />
-              <motion.div ref={fourthMaskRef} className="absolute top-0 bottom-0 bg-[#FFFAF3]" />
+              {/* First Masking Reveal */}
+              <motion.div
+                ref={rightMaskRef}
+                initial={{ width: "0px" }}
+                animate={{ width: "232px" }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 right-0 bg-[#FFFAF3]"
+              />
+              {/* Second Masking Reveal */}
+              <motion.div
+                ref={secondMaskRef}
+                initial={{ width: "0px" }}
+                animate={{ width: "calc(50vw - 232px)" }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 right-[232px] bg-[#FFFAF3]"
+              />
+              {/* Third Masking Reveal */}
+              <motion.div
+                ref={thirdMaskRef}
+                initial={{ width: "0px" }}
+                animate={{ width: "calc(50vw - 232px)" }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 right-[calc(50vw)] bg-[#FFFAF3]"
+              />
+              {/* Fourth Masking Reveal */}
+              <motion.div
+                ref={fourthMaskRef}
+                initial={{ width: "0px", left: "232px" }}
+                animate={{ width: "232px", left: "0px" }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 bg-[#FFFAF3]"
+              />
             </>
           )}
 
           {/* Mobile Animation - Split Screen Movement */}
           {isMobile && showMask && (
             <div className="relative w-full h-screen bg-[#FFFAF3] flex justify-center items-center overflow-hidden">
-              <motion.div ref={upperPartRef} className="absolute top-0 left-0 w-full h-1/2 bg-black" />
-              <motion.div ref={lowerPartRef} className="absolute bottom-0 left-0 w-full h-1/2 bg-black" />
+              {/* Upper Curtain */}
+              <motion.div
+                initial={{ y: "0%" }} // Start from center
+                animate={{ y: "-100%" }} // Move upward
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute top-0 left-0 w-full h-1/2 bg-black"
+              >
+                {/* Centered Line */}
+                <div className="absolute bottom-0 left-0 w-full h-[2px] bg-white"></div>
+              </motion.div>
+
+              {/* Lower Curtain */}
+              <motion.div
+                initial={{ y: "0%" }} // Start from center
+                animate={{ y: "100%" }} // Move downward
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute bottom-0 left-0 w-full h-1/2 bg-black"
+              >
+                {/* Centered Line */}
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-white"></div>
+              </motion.div>
             </div>
           )}
 
