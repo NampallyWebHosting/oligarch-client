@@ -40,7 +40,7 @@ const textGroups = [
     "their dynamic pitches and sculpting",
     "the milestones for generations to",
     "come with a sense of purpose.",
-    "I am the OLIGARCH.",
+    "I am The OLIGARCH.",
   ],
 ];
 const HorizontalScrollText: React.FC = () => {
@@ -125,7 +125,7 @@ const HorizontalScrollText: React.FC = () => {
           >
             <div className="w-full lg:max-w-[70%] mr-auto text-left pl-10">
               {group.map((line, lineIndex) => (
-                <p key={lineIndex} className={`mb-1 ${line === "I am the OLIGARCH." ? "mt-4 font-normal" : ""}`}>
+                <p key={lineIndex} className={`mb-1 ${line === "I am The OLIGARCH." ? "mt-4 font-medium" : ""}`}>
                   {line === "I am the OLIGARCH." ? <strong>{line}</strong> : line}
                 </p>
               ))}
