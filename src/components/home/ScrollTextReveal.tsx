@@ -12,8 +12,6 @@ const textGroups = [
     "young entrepreneurs worldwide,",
     "propelling them beyond limits",
     "and expectations.",
-  ],
-  [
     "Rising gracefully with every",
     "decisive stride, I ignite startups",
     "with fresh brilliance.",
@@ -22,38 +20,29 @@ const textGroups = [
     "I embody a unique fusion of",
     "engineering precision, artistic",
     "creativity, cutting-edge technology,",
-    "and strategic business acumen.",
+    "and strategic business acumen,",
+    "ensuring that every initiative is",
+    "thoughtfully designed and",
+    "meticulously executed.",
   ],
   [
     "I am the driving spirit behind",
     "shared aspirations and an",
     "entrepreneurial alliance spanning",
     "multiple states.",
-  ],
-  [
     "I nurture dreams, instill courage,",
     "evoke emotions, and spark both",
     "creative and pragmatic thinking.",
   ],
   [
-    "I serve as the beacon that draws",
+    "I serve as a beacon that draws",
     "visionary entrepreneurs, capturing",
-    "their dynamic pitches.",
+    "their dynamic pitches and sculpting",
+    "the milestones for generations to",
+    "come with a sense of purpose.",
+    "I am the OLIGARCH.",
   ],
-  [
-    "A sanctuary for the world’s most",
-    "innovative minds and the epitome",
-    "of excellence.",
-  ],
-  [
-    "More than a fleeting moment,",
-    "I sculpt the milestones for",
-    "generations to come with a",
-    "sense of purpose.",
-  ],
-  ["I am The Oligarch."],
 ];
-
 const HorizontalScrollText: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const textRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -129,14 +118,16 @@ const HorizontalScrollText: React.FC = () => {
             ref={(el) => {
               textRefs.current[index] = el;
             }}
-            className="absolute inset-0 flex items-center justify-start text-white text-base sm:text-2xl md:text-4xl lg:text-5xl font-light opacity-0 lg:leading-[100%] tracking-wide w-full px-4"
+            className="absolute inset-0 flex items-center justify-start text-white text-base sm:text-2xl md:text-4xl lg:text-5xl font-light opacity-0 lg:leading-[140%] tracking-wide w-full px-4"
             style={{
               textShadow: "0px 4px 12px rgba(255, 255, 255, 0.3)", // Soft glow effect
             }}
           >
-            <div className="w-full lg:max-w-[70%] mr-auto text-left">
+            <div className="w-full lg:max-w-[70%] mr-auto text-left pl-10">
               {group.map((line, lineIndex) => (
-                <p key={lineIndex} className="mb-1">{line}</p>
+                <p key={lineIndex} className={`mb-1 ${line === "I am the OLIGARCH." ? "mt-4 font-normal" : ""}`}>
+                  {line === "I am the OLIGARCH." ? <strong>{line}</strong> : line}
+                </p>
               ))}
             </div>
           </motion.div>

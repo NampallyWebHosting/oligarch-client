@@ -59,12 +59,12 @@ const ScrollSections: React.FC = () => {
           },
           {
             number: "4",
-            title: "Mahadev",
+            title: "Mahdev",
             description:
-              "Mahadev offers bespoke software development, design, cybersecurity, and AI solutions.",
+              "Mahdev offers bespoke software development, design, cybersecurity, and AI solutions.",
             imageSrc: MahadevLogo,
             bgColor: "#FFFAF3",
-            url: "https://example.com/mahadev",
+            url: "https://mahdev.dev",
           },
           {
             number: "5",
@@ -158,7 +158,7 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ items }) => {
                 <h2 className="text-2xl md:text-3xl leading-[100%] font-semibold ml-3">{item.title}</h2>
                 <p className="text-sm md:text-base font-medium mt-2 px-4 ">{item.description}</p>
                 {item.title === "Emiratea" ? (
-                  <span className="flex justify-end text-[#6F2330] font-semibold mt-4 md:mt-4">Coming Soon..</span>
+                  <span className="flex justify-end text-[#6F2330] font-semibold mt-4 md:mt-4">Coming Soon...</span>
                 ) : (
                   <a
                     href={item.url}
