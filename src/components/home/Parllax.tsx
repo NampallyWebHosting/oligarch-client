@@ -91,11 +91,11 @@ const LandingPage = () => {
                   });
                 },
               });
-            }, 500);
+            }, 900);
           }
         },
       });
-    }, 1000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [isMobile]);
