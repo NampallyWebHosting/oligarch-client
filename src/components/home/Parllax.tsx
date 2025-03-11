@@ -40,7 +40,14 @@ const LandingPage = () => {
       x: 0,
       duration: 1.5,
       ease: "power2.inOut",
-      onComplete: () => setShowLines(true), // ✅ Show lines only after curtain is fully revealed
+      onComplete: () => {
+        setShowLines(true);
+        setTimeout(() => {
+          document.body.style.display = "none";
+          document.body.offsetHeight; // Trigger Reflow
+          document.body.style.display = "block";
+        }, 100);
+      }      
     });
 
     if (isMobile) {

@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 
-// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const textGroups = [
@@ -43,6 +42,7 @@ const textGroups = [
     "I am The OLIGARCH.",
   ],
 ];
+
 const HorizontalScrollText: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const textRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -56,9 +56,9 @@ const HorizontalScrollText: React.FC = () => {
         trigger: section,
         pin: true,
         start: "top top",
-        end: `+=${textGroups.length * 100}%`,
-        scrub: 1,
-        snap: { snapTo: "labels", duration: 0.5, ease: "power1.inOut" },
+        end: `+=${textGroups.length * 120}%`, // Slower scrolling
+        scrub: 1.5, // Smoother scrub
+        snap: { snapTo: "labels", duration: 0.3, ease: "power1.inOut" },
         invalidateOnRefresh: true,
       },
     });
@@ -67,23 +67,20 @@ const HorizontalScrollText: React.FC = () => {
       const textElement = textRefs.current[index];
 
       if (textElement) {
-        // Hide all text initially
-        gsap.set(textElement, { opacity: 0, y: 50, scale: 0.95 });
+        gsap.set(textElement, { opacity: 0, y: 50, scale: 0.95, willChange: "opacity, transform" });
 
-        // Show current paragraph with scale effect
         timeline.to(
           textElement,
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1,
-            ease: "power3.out",
+            duration: 1.2,
+            ease: "power2.out",
           },
           index
         );
 
-        // Hide previous paragraph
         if (index > 0) {
           const prevTextElement = textRefs.current[index - 1];
           timeline.to(
@@ -92,10 +89,10 @@ const HorizontalScrollText: React.FC = () => {
               opacity: 0,
               y: -50,
               scale: 0.95,
-              duration: 0.8,
+              duration: 1,
               ease: "power2.out",
             },
-            index - 0.2
+            index - 0.3
           );
         }
       }
@@ -118,9 +115,9 @@ const HorizontalScrollText: React.FC = () => {
             ref={(el) => {
               textRefs.current[index] = el;
             }}
-            className="absolute inset-0 flex items-center justify-start text-white text-base sm:text-2xl md:text-4xl lg:text-5xl font-light opacity-0 lg:leading-[140%] tracking-wide w-full px-4"
+            className="absolute inset-0 flex items-center justify-start text-white text-base sm:text-2xl md:text-4xl lg:text-5xl font-light opacity-0 lg:leading-[140%] tracking-wide w-full px-4 will-change-transform"
             style={{
-              textShadow: "0px 4px 12px rgba(255, 255, 255, 0.3)", // Soft glow effect
+              textShadow: "0px 4px 12px rgba(255, 255, 255, 0.3)",
             }}
           >
             <div className="w-full lg:max-w-[70%] mr-auto text-left pl-10">
@@ -134,7 +131,6 @@ const HorizontalScrollText: React.FC = () => {
         ))}
       </div>
     </div>
-
   );
 };
 
