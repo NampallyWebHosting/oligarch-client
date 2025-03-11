@@ -35,19 +35,19 @@ const LandingPage = () => {
 
     const timeline = gsap.timeline({ defaults: { duration: 1.2, ease: "power2.inOut" } });
 
-    // Animate the curtain
-    timeline.to(curtainRef.current, { x: 0 });
-
-    // Show lines after curtain animation
-    timeline.add(() => setShowLines(true));
+    // Animate the curtain, then show lines only when it fully reaches the left
+    timeline.to(curtainRef.current, {
+      x: 0,
+      duration: 1.5,
+      ease: "power2.inOut",
+      onComplete: () => setShowLines(true), // ✅ Show lines only after curtain is fully revealed
+    });
 
     if (isMobile) {
-      // Mobile Animation: Split screen movement
       timeline.add(() => setShowMask(true), "+=0.5");
       timeline.to(upperPartRef.current, { y: "-100%" });
       timeline.to(lowerPartRef.current, { y: "100%" }, "<");
     } else {
-      // Desktop Animation: Masking sequence
       timeline.add(() => setShowMask(true), "+=0.9");
       timeline.to(rightMaskRef.current, { width: "232px" });
       timeline.to(secondMaskRef.current, { width: "calc(50vw - 232px)" });
@@ -55,6 +55,7 @@ const LandingPage = () => {
       timeline.to(fourthMaskRef.current, { left: "0px", width: "232px" });
     }
   };
+
 
   useEffect(() => {
     const timer = setTimeout(startAnimation, 3000);
@@ -74,7 +75,7 @@ const LandingPage = () => {
   }, [isMobile]);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#FFFAF3] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full min-h-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden">
       {/* Logo */}
       <img src={logo} alt="Logo" className="w-[500px]" />
 
