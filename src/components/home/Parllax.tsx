@@ -101,7 +101,7 @@ const LandingPage = () => {
   }, [isMobile]);
 
   return (
-    <div className="relative min-h-[100dvh] w-full bg-[#FFFAF3] flex items-center justify-center overflow-hidden border border-red-500">
+    <div className="relative min-h-[100dvh] w-full bg-[#FFFAF3] flex items-center justify-center overflow-hidden">
       {/* Logo */}
       <img src={logo} alt="Logo" className=" w-64 md:w-[500px]" />
       {/* Black Curtain */}
