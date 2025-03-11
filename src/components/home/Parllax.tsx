@@ -103,8 +103,7 @@ const LandingPage = () => {
   return (
     <div className="relative h-screen w-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden">
       {/* Logo */}
-      <img src={logo} alt="Logo" className="w-[500px]" />
-
+      <img src={logo} alt="Logo" className=" w-64 md:w-[500px]" />
       {/* Black Curtain */}
       {showCurtain && (
         <motion.div
