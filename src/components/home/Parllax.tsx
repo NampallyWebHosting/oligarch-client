@@ -117,15 +117,15 @@ const LandingPage = () => {
           {/* Desktop Animation - Vertical Lines & Masking */}
           {!isMobile && showLines && (
             <>
-              <div className="absolute top-0 bottom-0 w-[2px] bg-white left-[232px]" />
-              <div className="absolute top-0 bottom-0 w-[2px] bg-white left-1/2 transform -translate-x-1/2" />
-              <div className="absolute top-0 bottom-0 w-[2px] bg-white right-[232px]" />
+              <div className="absolute top-0 bottom-0 left-[232px] w-[3px] bg-white scale-x-[1.05] transform-gpu will-change-transform" />
+              <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[3px] bg-white scale-x-[1.05] transform-gpu will-change-transform" />
+              <div className="absolute top-0 bottom-0 right-[232px] w-[3px] bg-white scale-x-[1.05] transform-gpu will-change-transform" />
             </>
           )}
 
           {/* Mobile Animation - Single Horizontal Line */}
           {isMobile && showLines && (
-            <div className="absolute left-0 right-0 h-[2px] bg-white top-1/2 transform -translate-y-1/2" />
+            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] bg-white scale-y-[1.05] transform-gpu will-change-transform" />
           )}
 
           {/* Masking Animations */}
