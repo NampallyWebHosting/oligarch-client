@@ -75,108 +75,105 @@ const LandingPage = () => {
   }, [isMobile]);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#FFFAF3] flex items-center justify-center border border-red-500">
-      {/* logo */}
-      <div className="grid place-items-center w-full h-full">
-        <img src={logo} alt="Logo" className="w-[300px] md:w-[500px]" loading="lazy" />
+    <div className="relative w-full h-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden border border-red-500">
+      {/* Logo - Always Centered */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img src={logo} alt="Logo" className="w-[300px] md:w-[500px] max-w-full max-h-[90vh] border border-green-500" />
       </div>
 
-      {/* Black Curtain */}
-      <div>
-        {showCurtain && (
-          <motion.div
-            ref={curtainRef}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute top-0 left-0 w-full h-full bg-black"
-          >
-            {/* Desktop Lines */}
-            {!isMobile && showLines && (
-              <>
-                <div className="absolute top-0 bottom-0 left-[232px] w-[3px] bg-white scale-x-[1.05] transform-gpu will-change-transform" />
-                <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[3px] bg-white scale-x-[1.05] transform-gpu will-change-transform" />
-                <div className="absolute top-0 bottom-0 right-[232px] w-[3px] bg-white scale-x-[1.05] transform-gpu will-change-transform" />
-              </>
-            )}
+      {/* Black Curtain Animation */}
+      {showCurtain && (
+        <motion.div
+          ref={curtainRef}
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute top-0 left-0 w-full h-full bg-black"
+        >
+          {/* Desktop Lines */}
+          {!isMobile && showLines && (
+            <>
+              <div className="absolute top-0 bottom-0 left-[232px] w-[3px] bg-white scale-x-[1.05]" />
+              <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[3px] bg-white scale-x-[1.05]" />
+              <div className="absolute top-0 bottom-0 right-[232px] w-[3px] bg-white scale-x-[1.05]" />
+            </>
+          )}
 
-            {/* Mobile Line */}
-            {isMobile && showLines && (
-              <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] bg-white scale-y-[1.05] transform-gpu will-change-transform" />
-            )}
+          {/* Mobile Line */}
+          {isMobile && showLines && (
+            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] bg-white scale-y-[1.05]" />
+          )}
 
-            {/* Masking Animations */}
-            {!isMobile && showMask && (
-              <>
-                <motion.div
-                  ref={rightMaskRef}
-                  initial={{ width: "0px" }}
-                  animate={{ width: "232px" }}
-                  transition={{ duration: 1.2, ease: "easeInOut" }}
-                  className="absolute top-0 bottom-0 right-0 bg-[#FFFAF3]"
-                />
-                <motion.div
-                  ref={secondMaskRef}
-                  initial={{ width: "0px" }}
-                  animate={{ width: "calc(50vw - 232px)" }}
-                  transition={{ duration: 1.2, ease: "easeInOut" }}
-                  className="absolute top-0 bottom-0 right-[232px] bg-[#FFFAF3]"
-                />
-                <motion.div
-                  ref={thirdMaskRef}
-                  initial={{ width: "0px" }}
-                  animate={{ width: "calc(50vw - 232px)" }}
-                  transition={{ duration: 1.2, ease: "easeInOut" }}
-                  className="absolute top-0 bottom-0 right-[calc(50vw)] bg-[#FFFAF3]"
-                />
-                <motion.div
-                  ref={fourthMaskRef}
-                  initial={{ width: "0px", left: "232px" }}
-                  animate={{ width: "232px", left: "0px" }}
-                  transition={{ duration: 1.2, ease: "easeInOut" }}
-                  className="absolute top-0 bottom-0 bg-[#FFFAF3]"
-                />
-              </>
-            )}
-
-            {/* Mobile Animation - Split Screen Movement */}
-            {isMobile && showMask && (
-              <div className="relative w-full min-h-screen bg-[#FFFAF3] flex justify-center items-center overflow-hidden">
-                <motion.div
-                  initial={{ y: "0%" }}
-                  animate={{ y: "-100%" }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                  className="absolute top-0 left-0 w-full h-1/2 bg-black"
-                >
-                  <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white scale-y-[1.05] transform-gpu will-change-transform"></div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ y: "0%" }}
-                  animate={{ y: "100%" }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                  className="absolute bottom-0 left-0 w-full h-1/2 bg-black"
-                >
-                  <div className="absolute top-0 left-0 w-full h-[3px] bg-white scale-y-[1.05] transform-gpu will-change-transform"></div>
-                </motion.div>
-              </div>
-            )}
-
-            {/* OLIGARCH Text */}
-            {showMask && (
+          {/* Masking Animations */}
+          {!isMobile && showMask && (
+            <>
               <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className={`absolute text-black font-normal leading-[100%] tracking-[0%] inset-0 flex items-center justify-center font-sedan ${isMobile ? "text-[54px]" : "md:text-[120px] lg:text-[143px]"
-                  }`}
+                ref={rightMaskRef}
+                initial={{ width: "0px" }}
+                animate={{ width: "232px" }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 right-0 bg-[#FFFAF3]"
+              />
+              <motion.div
+                ref={secondMaskRef}
+                initial={{ width: "0px" }}
+                animate={{ width: "calc(50vw - 232px)" }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 right-[232px] bg-[#FFFAF3]"
+              />
+              <motion.div
+                ref={thirdMaskRef}
+                initial={{ width: "0px" }}
+                animate={{ width: "calc(50vw - 232px)" }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 right-[calc(50vw)] bg-[#FFFAF3]"
+              />
+              <motion.div
+                ref={fourthMaskRef}
+                initial={{ width: "0px", left: "232px" }}
+                animate={{ width: "232px", left: "0px" }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 bg-[#FFFAF3]"
+              />
+            </>
+          )}
+
+          {/* Mobile Split Screen Movement */}
+          {isMobile && showMask && (
+            <div className="relative w-full min-h-screen bg-[#FFFAF3] flex justify-center items-center overflow-hidden">
+              <motion.div
+                initial={{ y: "0%" }}
+                animate={{ y: "-100%" }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute top-0 left-0 w-full h-1/2 bg-black"
               >
-                OLIGARCH
+                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white scale-y-[1.05]" />
               </motion.div>
-            )}
-          </motion.div>
-        )}
-      </div>
+
+              <motion.div
+                initial={{ y: "0%" }}
+                animate={{ y: "100%" }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute bottom-0 left-0 w-full h-1/2 bg-black"
+              >
+                <div className="absolute top-0 left-0 w-full h-[3px] bg-white scale-y-[1.05]" />
+              </motion.div>
+            </div>
+          )}
+
+          {/* OLIGARCH Text - Always Centered */}
+          {showMask && (
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="absolute inset-0 flex items-center justify-center text-black font-sedan text-[54px] md:text-[120px] lg:text-[143px] border border-blue-500"
+            >
+              OLIGARCH
+            </motion.div>
+          )}
+        </motion.div>
+      )}
     </div>
   );
 };
