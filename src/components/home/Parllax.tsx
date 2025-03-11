@@ -40,14 +40,7 @@ const LandingPage = () => {
       x: 0,
       duration: 1.5,
       ease: "power2.inOut",
-      onComplete: () => {
-        setShowLines(true);
-        setTimeout(() => {
-          document.body.style.display = "none";
-          document.body.offsetHeight; // Trigger Reflow
-          document.body.style.display = "block";
-        }, 100);
-      }      
+      onComplete: () => setShowLines(true), // ✅ Show lines only after curtain is fully revealed
     });
 
     if (isMobile) {
@@ -113,7 +106,7 @@ const LandingPage = () => {
 
           {/* Mobile Animation - Split Screen Movement */}
           {isMobile && showMask && (
-            <div className="relative w-full h-screen bg-[#FFFAF3] flex justify-center items-center overflow-hidden">
+            <div className="relative w-full h-screen bg-gray-500 flex justify-center items-center overflow-hidden">
               <motion.div initial={{ y: "0%" }} animate={{ y: "-100%" }} transition={{ duration: 1.5, ease: "easeInOut" }} className="absolute top-0 left-0 w-full h-1/2 bg-black">
                 <div className="absolute bottom-0 left-0 w-full h-[2px] bg-white"></div>
               </motion.div>
