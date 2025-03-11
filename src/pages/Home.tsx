@@ -5,7 +5,7 @@ import Card from '@/components/home/ScrollShowcase'
 
 const Home = () => {
     return (
-        <div className='overflow-hidden' >
+        <div className='overflow-hidden min-h-screen'>
             <ParallaxEffect />
             <ScrollTextReveal />
             <Card />

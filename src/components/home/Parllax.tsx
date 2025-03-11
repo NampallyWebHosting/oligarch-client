@@ -73,11 +73,6 @@ const LandingPage = () => {
       ]);
     };
   }, [isMobile]);
-  useEffect(() => {
-  requestAnimationFrame(() => {
-    startAnimation();
-  });
-}, []);
 
   return (
     <div className="relative w-full min-h-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden h-[100dvh]">
