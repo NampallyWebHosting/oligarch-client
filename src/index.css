@@ -83,7 +83,6 @@ html, body {
   overflow-x: hidden; /* Prevent horizontal scrolling */
   overflow-y: auto;   /* Allow vertical scrolling */
   height: auto;        /* Let the body expand */
-  min-height: 100%;
 }
 
 @theme inline {

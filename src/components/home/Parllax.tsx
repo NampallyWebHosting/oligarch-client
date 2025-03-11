@@ -75,13 +75,12 @@ const LandingPage = () => {
   }, [isMobile]);
 
   return (
-    <div className="relative w-full h-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden border border-red-500">
-      {/* Logo - Always Centered */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <img src={logo} alt="Logo" className="w-[300px] md:w-[500px] max-w-full max-h-[90vh] border border-green-500" />
+    <div className="relative w-full min-h-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden border  border-red-500">
+      {/* Logo */}
+      <div className="flex items-center justify-center w-full">
+        <img src={logo} alt="Logo" className="w-[300px] md:w-[500px]" loading="lazy" />
       </div>
-
-      {/* Black Curtain Animation */}
+      {/* Black Curtain */}
       {showCurtain && (
         <motion.div
           ref={curtainRef}
@@ -93,15 +92,15 @@ const LandingPage = () => {
           {/* Desktop Lines */}
           {!isMobile && showLines && (
             <>
-              <div className="absolute top-0 bottom-0 left-[232px] w-[3px] bg-white scale-x-[1.05]" />
-              <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[3px] bg-white scale-x-[1.05]" />
-              <div className="absolute top-0 bottom-0 right-[232px] w-[3px] bg-white scale-x-[1.05]" />
+              <div className="absolute top-0 bottom-0 left-[232px] w-[3px] bg-white scale-x-[1.05] transform-gpu will-change-transform" />
+              <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[3px] bg-white scale-x-[1.05] transform-gpu will-change-transform" />
+              <div className="absolute top-0 bottom-0 right-[232px] w-[3px] bg-white scale-x-[1.05] transform-gpu will-change-transform" />
             </>
           )}
 
           {/* Mobile Line */}
           {isMobile && showLines && (
-            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] bg-white scale-y-[1.05]" />
+            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] bg-white scale-y-[1.05] transform-gpu will-change-transform" />
           )}
 
           {/* Masking Animations */}
@@ -138,16 +137,16 @@ const LandingPage = () => {
             </>
           )}
 
-          {/* Mobile Split Screen Movement */}
+          {/* Mobile Animation - Split Screen Movement */}
           {isMobile && showMask && (
-            <div className="relative w-full min-h-screen bg-[#FFFAF3] flex justify-center items-center overflow-hidden">
+            <div className="relative w-full h-screen bg-[#FFFAF3] flex justify-center items-center overflow-hidden">
               <motion.div
                 initial={{ y: "0%" }}
                 animate={{ y: "-100%" }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
                 className="absolute top-0 left-0 w-full h-1/2 bg-black"
               >
-                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white scale-y-[1.05]" />
+                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white scale-y-[1.05] transform-gpu will-change-transform"></div>
               </motion.div>
 
               <motion.div
@@ -156,21 +155,24 @@ const LandingPage = () => {
                 transition={{ duration: 1.5, ease: "easeInOut" }}
                 className="absolute bottom-0 left-0 w-full h-1/2 bg-black"
               >
-                <div className="absolute top-0 left-0 w-full h-[3px] bg-white scale-y-[1.05]" />
+                <div className="absolute top-0 left-0 w-full h-[3px] bg-white scale-y-[1.05] transform-gpu will-change-transform"></div>
               </motion.div>
             </div>
           )}
 
-          {/* OLIGARCH Text - Always Centered */}
+          {/* OLIGARCH Text */}
           {showMask && (
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="absolute inset-0 flex items-center justify-center text-black font-sedan text-[54px] md:text-[120px] lg:text-[143px] border border-blue-500"
-            >
-              OLIGARCH
-            </motion.div>
+            <div className="absolute inset-0 flex items-center justify-center min-h-screen">
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className={` text-black font-normal leading-[100%] tracking-[0%] font-sedan ${isMobile ? "text-[54px]" : "md:text-[120px] lg:text-[143px]"
+                  }`}
+              >
+                OLIGARCH
+              </motion.div>
+            </div>
           )}
         </motion.div>
       )}
