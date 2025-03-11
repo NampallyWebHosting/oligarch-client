@@ -79,11 +79,6 @@
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
 }
-html, body {
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  overflow-y: auto;   /* Allow vertical scrolling */
-  height: auto;        /* Let the body expand */
-}
 
 @theme inline {
   --color-background: var(--background);
