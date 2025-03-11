@@ -73,12 +73,16 @@ const LandingPage = () => {
       ]);
     };
   }, [isMobile]);
+  useEffect(() => {
+  requestAnimationFrame(() => {
+    startAnimation();
+  });
+}, []);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full min-h-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden h-[100dvh]">
       {/* Logo */}
       <img src={logo} alt="Logo" className="w-[300px] md:w-[500px]" loading="lazy" />
-
       {/* Black Curtain */}
       {showCurtain && (
         <motion.div
