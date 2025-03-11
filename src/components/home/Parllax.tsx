@@ -77,7 +77,7 @@ const LandingPage = () => {
   return (
     <div className="relative w-full min-h-screen bg-[#FFFAF3] flex items-center justify-center overflow-hidden">
       {/* Logo */}
-      <img src={logo} alt="Logo" className="w-[500px]" />
+      <img src={logo} alt="Logo" className="w-[300px] md:w-[500px]" loading="lazy" />
 
       {/* Black Curtain */}
       {showCurtain && (
