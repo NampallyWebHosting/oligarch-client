@@ -140,7 +140,7 @@ const FullScreenWithLeftToRightFill: React.FC = () => {
       {/* Initial Full-Screen Intro */}
       {showIntro && (
         <div className="intro-screen fixed top-0 left-0 w-screen h-screen bg-[#FFFAF3] flex items-center justify-center z-50">
-          <img src={logo} alt="" />
+          <img src={logo} alt="" className="md:max-w-md" />
         </div>
       )}
 
@@ -174,7 +174,7 @@ const FullScreenWithLeftToRightFill: React.FC = () => {
         {/* Centered Animated Text */}
         <div
           ref={textRef}
-          className="absolute text-black font-normal leading-[100%] tracking-[0%] font-sedan text-[3.5rem] md:text-[143.59px] opacity-0"
+          className="absolute text-black font-normal leading-[100%] tracking-[0%] font-sedan text-[3.5rem] md:text-[123.59px] lg:text-[173.59px] opacity-0"
         >
           OLIGARCH
         </div>
