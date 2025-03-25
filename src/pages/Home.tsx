@@ -6,10 +6,12 @@ import Card from '@/components/home/ScrollShowcase'
 const Home = () => {
     return (
         <>
-            <ParallaxEffect />
-            <ScrollTextReveal />
-            <Card />
-            <Footer />
+            <div className='overflow-hidden'>
+                <ParallaxEffect />
+                <ScrollTextReveal />
+                <Card />
+                <Footer />
+            </div>
         </>
     )
 }

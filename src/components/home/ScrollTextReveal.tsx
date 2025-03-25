@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
-
+import BackgroudImage from "@/assets/Desktop - 30.svg"
 gsap.registerPlugin(ScrollTrigger);
 
 const textGroups = [
@@ -106,7 +106,8 @@ const HorizontalScrollText: React.FC = () => {
   return (
     <div
       ref={sectionRef}
-      className="h-screen w-full flex items-center justify-center overflow-hidden bg-black"
+      className="h-screen w-full flex items-center justify-center overflow-hidden  bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${BackgroudImage})` }}
     >
       <div className="relative w-full flex flex-col items-center text-center font-montserrat">
         {textGroups.map((group, index) => (
